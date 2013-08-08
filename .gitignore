@@ -3,3 +3,5 @@ gen
 out
 .idea
 Apollo.iml
+.classpath
+.lint
