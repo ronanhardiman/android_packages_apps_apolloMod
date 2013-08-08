@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import android.R.anim;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
@@ -130,13 +131,15 @@ public class MusicLibrary extends Activity implements ServiceConnection {
 
         Bundle bundle = new Bundle();
         bundle.putString(MIME_TYPE, Audio.Playlists.CONTENT_TYPE);
-        bundle.putLong(BaseColumns._ID, PLAYLIST_RECENTLY_ADDED);
+        bundle.putLong(BaseColumns._ID, PLAYLIST_RECENTLY_ADDED);//playlist 最近添加
         
         //Get tab visibility preferences
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        //tab
         Set<String> defaults = new HashSet<String>(Arrays.asList(
         		getResources().getStringArray(R.array.tab_titles)
         	));
+        //获取在设置中  选择的tab 可选项
         Set<String> tabs_set = sp.getStringSet(TABS_ENABLED,defaults);
         //if its empty fill reset it to full defaults
         	//stops app from crashing when no tabs are shown
@@ -229,13 +232,13 @@ public class MusicLibrary extends Activity implements ServiceConnection {
 	        	startActivityForResult(new Intent(this, SettingsHolder.class),0);
 	            break;
 
-	        case R.id.action_eqalizer:
-	        	Intent i = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
+	        case R.id.action_eqalizer://均衡器
+	        	Intent i = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);//系统播放控制面板
                 i.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, MusicUtils.getCurrentAudioId());
                 startActivityForResult(i, 0);
 	            break;
 
-	        case R.id.action_shuffle_all:
+	        case R.id.action_shuffle_all://随机播放
 	        	shuffleAll();
 	            break;
 

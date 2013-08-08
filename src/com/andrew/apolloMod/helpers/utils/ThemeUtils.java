@@ -62,7 +62,7 @@ public class ThemeUtils {
             String item_name, View item, int themeType) {
         Drawable d = null;
         if (themeResources != null) {
-            int resource_id = themeResources.getIdentifier(item_name, "drawable", themePackage);
+            int resource_id = themeResources.getIdentifier(item_name, "drawable", themePackage);//getIdentifier 标识符
             if (resource_id != 0) {
                 try {
                     d = themeResources.getDrawable(resource_id);

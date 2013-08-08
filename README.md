@@ -19,3 +19,6 @@ New Features:
 ![ScreenShot](http://i.imgur.com/9MwbZDn.png)
 ![ScreenShot](http://i.imgur.com/H8wPy7S.png)
 ![ScreenShot](http://i.imgur.com/y5QIymQ.png)
+
+20130808
+sdk 16 的手机上可以正常运行,低版本的运行不好,

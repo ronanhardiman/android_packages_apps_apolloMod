@@ -21,10 +21,12 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
+import com.andrew.apolloMod.BuildConfig;
 import com.andrew.apolloMod.ui.adapters.TabAdapter;
 
 /**
@@ -33,7 +35,7 @@ import com.andrew.apolloMod.ui.adapters.TabAdapter;
  */
 public class ScrollableTabView extends HorizontalScrollView implements
         ViewPager.OnPageChangeListener {
-
+	private static final String TAG = "ScrollableTabView";
     private ViewPager mPager = null;
 
     private TabAdapter mAdapter = null;
@@ -52,7 +54,7 @@ public class ScrollableTabView extends HorizontalScrollView implements
 
     public ScrollableTabView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs);
-
+//    	super(context, attrs, defStyle);
         this.setHorizontalScrollBarEnabled(false);
         this.setHorizontalFadingEdgeEnabled(false);
 
@@ -151,8 +153,11 @@ public class ScrollableTabView extends HorizontalScrollView implements
         final int l = selectedTab.getLeft();
 
         final int x = l - this.getWidth() / 2 + w / 2;
-
+        //页面显示 3个完整的tab
         smoothScrollTo(x, this.getScrollY());
+        if(BuildConfig.DEBUG){
+        	Log.e(TAG, "smothScrollTo : x ="+x+" this.getScrolly() = "+this.getScrollY());
+        }
 
     }
 
